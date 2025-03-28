@@ -245,6 +245,33 @@ describe("ExportToCsv", () => {
     );
   });
 
+  it("should replace null with specified value", () => {
+    const options: ConfigOptions = {
+      filename: "Test Csv 2",
+      useBom: false,
+      showColumnHeaders: true,
+      useKeysAsHeaders: true,
+      replaceNullWith: "TEST",
+    };
+
+    const output = asString(
+      generateCsv(options)([
+        {
+          car: "toyota",
+          color: "blue",
+        },
+        {
+          car: "chevrolet",
+          color: null
+        },
+      ]),
+    );
+
+    expect(output).toBe(
+      '"car","color"\r\n"toyota","blue"\r\n"chevrolet","TEST"\r\n',
+    );
+  });
+
   it("should handle varying data shapes by manually setting column headers", () => {
     const options: ConfigOptions = {
       filename: "Test Csv 2",

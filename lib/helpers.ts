@@ -174,7 +174,7 @@ const formatNullish = (
   }
 
   if (data === null) {
-    return formatString(config, "null");
+    return formatString(config, config.replaceNullWith || "null");
   }
 
   return formatString(config, "");

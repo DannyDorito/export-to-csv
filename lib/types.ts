@@ -37,6 +37,7 @@ export type ConfigOptions = {
   useKeysAsHeaders?: boolean;
   boolDisplay?: { true: string; false: string };
   replaceUndefinedWith?: string | boolean | null;
+  replaceNullWith?: string | null;
 };
 
 export type HeaderKey = Newtype<{ readonly HeaderKey: unique symbol }, string>;
